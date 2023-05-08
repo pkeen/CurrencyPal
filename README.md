@@ -13,6 +13,9 @@ A simple currency coverter web app, using [currency-api by fawazahmed0](https://
 * Enter a numerical amount to compare // Not Yet
 * Enter date within last year to compare // Not Yet
 
+#### Bugs/Improvements
+* Make Initial select box state be ---- (at the moment 1inch is selected but chossing that does not change it)
+
 (This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).)
 
 
