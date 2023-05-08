@@ -9,7 +9,7 @@ A simple currency coverter web app, using [currency-api by fawazahmed0](https://
 
 ### Features
 * Select a currency and compare to all
-* Compare two currencies // Not yet
+* Compare two currencies
 * Enter a numerical amount to compare // Not Yet
 * Enter date within last year to compare // Not Yet
 
