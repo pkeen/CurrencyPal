@@ -1,16 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-function SelectCurrency({currencies}) {
 
+function SelectCurrency({currencies, handleSelectCurrency}) {
+
+    /* Currency options */
     let currenciesArray = Object.entries(currencies);
 
     currenciesArray = currenciesArray.map((currency) => {
-        return <option value={currency[0]}>{currency[1]}</option>
+        return ( <option 
+                    key={currency[0]} 
+                    value={currency[0]}>
+                        {currency[0].toUpperCase()}: {currency[1]}
+                    </option>
+        )
     });
+
+    
 
     return (
         <form>
-            <select name="currency">
+            <select name="currency" onChange={handleSelectCurrency}>
                 {currenciesArray}
             </select>
         </form>

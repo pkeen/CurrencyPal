@@ -8,15 +8,16 @@ const endpoint = '/currencies.json';
 function useCurrencies() {
     const [currencies, setCurrencies] = useState({});
 
-    useEffect(() => {
-        getCurrencies();
-      }, []);
-    
     const getCurrencies = async () => {
         const response = await fetch(`${CURRENCY_API_BASE}${date}${endpoint}`)
         const jsonData = await response.json();
         setCurrencies(jsonData);
     };
+
+    useEffect(() => {
+        getCurrencies();
+    }, []);
+    
     
     return currencies;
 }
