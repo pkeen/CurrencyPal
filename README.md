@@ -4,7 +4,7 @@ A simple currency coverter web app, using [currency-api by fawazahmed0](https://
 
 ## Tools used
 
-* Currency-api
+* [Currency-api](https://github.com/fawazahmed0/currency-api#readme)
 * React
 
 
