@@ -53,7 +53,7 @@ function App() {
   }
 
   useEffect(() => {
-    if (multiplier !== multiplierRef.current){
+    if (multiplier !== multiplierRef.current || multiplier2 === multiplier2Ref.current){
       setMultiplier(multiplier2 * (1 / exchangeRate))
     }
   }, [multiplier2, exchangeRate])
@@ -74,12 +74,6 @@ function App() {
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <Typography variant='h1' sx={{textAlign: 'center'}}>CurrencyPal</Typography>
-        </Grid>
-        <Grid item xs={12}>
-        <Typography sx={{textAlign: 'center'}}>{exchangeRate}</Typography>
-        </Grid>
-        <Grid item xs={12}>
-          <SelectField />
         </Grid>
 
         <Grid item container xs={6}>
@@ -103,6 +97,9 @@ function App() {
         
         <Grid item xs={12}>
           <CurrencyComparisonHeader currency1={selectedCurrency} currency2={selectedCurrency2} />
+        </Grid>
+        <Grid item xs={12}>
+          <Typography sx={{textAlign: 'center'}}>Exchange rate: {exchangeRate}</Typography>
         </Grid>
         <Grid item xs={12}>
           <ResultsDisplay 
