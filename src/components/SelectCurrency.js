@@ -18,12 +18,10 @@ function SelectCurrency({currencies, handleSelectCurrency}) {
     
 
     return (
-        <form>
             <select name="currency" onChange={handleSelectCurrency}>
                 <option value="" selected disabled hidden>Choose Currency</option>
                 {currenciesArray}
             </select>
-        </form>
         
     )
 }

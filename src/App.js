@@ -4,13 +4,14 @@ import useCurrencies from './hooks/useCurrencies';
 import useCompareCurrencies from './hooks/useCompareCurrencies';
 import SelectCurrency from './components/SelectCurrency';
 import CurrencyComparisonHeader from './components/CurrencyComparisonHeader';
+import ResultsDisplay from './components/ResultsDisplay';
 
 function App() {
 
-  // Get currencies for select list
+  // Get currencies for SelectCurrency lists
   const currencies = useCurrencies();
 
-  /* Currency Selected */
+  /* Currency Selected 1 */
   const [selectedCurrency, setSelectedCurrency] = useState(null);
   const handleSelectCurrency = e => {
       setSelectedCurrency(e.target.value);
@@ -25,20 +26,34 @@ function App() {
   /* Currency Comparisons */
   const currencyComparison = useCompareCurrencies(selectedCurrency, selectedCurrency2);
 
-  /* Logic for creating list */
+  /* Mutliplier Value */
+  const [multiplier, setMultiplier] = useState(1);
+  const handleMultiplier = e => {
+    setMultiplier(e.target.value);
+  }
+  console.log(`Multiplier: ${multiplier}`)
+
+  /* Logic for creating list
   let currencyComparisonArray = Object.entries(currencyComparison);
 
   currencyComparisonArray = currencyComparisonArray.map((currencyComparison) => {
     return <li key={currencyComparison[0]}>{currencyComparison[0]}: {currencyComparison[1]}</li>
   })
+  */
 
   return (
     <>
-      <h1>Currency Checker</h1>
+      <h1>CurrencyPal</h1>
       <SelectCurrency id="currency1" currencies={currencies} handleSelectCurrency={handleSelectCurrency}></SelectCurrency>
+      <input name="number" type="number" value={multiplier} onChange={handleMultiplier}></input>
       <SelectCurrency id="currency2" currencies={currencies} handleSelectCurrency={handleSelectCurrency2}></SelectCurrency>
+      
       <CurrencyComparisonHeader currency1={selectedCurrency} currency2={selectedCurrency2} />
-      <ul>{currencyComparisonArray}</ul>
+      <ResultsDisplay 
+        currencyComparison={currencyComparison} 
+        currency1={selectedCurrency} 
+        currency2={selectedCurrency2}
+        multiplier={multiplier} />
     </>
   );
 }
