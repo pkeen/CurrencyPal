@@ -1,10 +1,17 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import './App.css';
 import useCurrencies from './hooks/useCurrencies';
 import useCompareCurrencies from './hooks/useCompareCurrencies';
 import SelectCurrency from './components/SelectCurrency';
 import CurrencyComparisonHeader from './components/CurrencyComparisonHeader';
 import ResultsDisplay from './components/ResultsDisplay';
+import MultiplierField from './components/MultiplierField';
+import SelectField from './components/SelectField';
+import { Container, Grid } from '@mui/material';
+import {Typography} from '@mui/material';
+import CssBaseline from '@mui/material/CssBaseline';
+import useExchangeRate from './hooks/useExchangeRate';
+
 
 function App() {
 
@@ -23,37 +30,90 @@ function App() {
       setSelectedCurrency2(e.target.value);
   } 
 
+  /* useExchangeRate */
+  const exchangeRate = useExchangeRate(selectedCurrency, selectedCurrency2);
+
   /* Currency Comparisons */
   const currencyComparison = useCompareCurrencies(selectedCurrency, selectedCurrency2);
-
+  
   /* Mutliplier Value */
   const [multiplier, setMultiplier] = useState(1);
+  const [multiplier2, setMultiplier2] = useState(1);
+  const multiplierRef = useRef(1);
+  const multiplier2Ref = useRef(1);
+
   const handleMultiplier = e => {
     setMultiplier(e.target.value);
+    multiplierRef.current = e.target.value;
   }
-  console.log(`Multiplier: ${multiplier}`)
 
-  /* Logic for creating list
-  let currencyComparisonArray = Object.entries(currencyComparison);
+  const handleMultiplier2 = e => {
+    setMultiplier2(e.target.value);
+    multiplier2Ref.current = e.target.value;
+  }
 
-  currencyComparisonArray = currencyComparisonArray.map((currencyComparison) => {
-    return <li key={currencyComparison[0]}>{currencyComparison[0]}: {currencyComparison[1]}</li>
-  })
-  */
+  useEffect(() => {
+    if (multiplier !== multiplierRef.current){
+      setMultiplier(multiplier2 * (1 / exchangeRate))
+    }
+  }, [multiplier2, exchangeRate])
+  
+
+  useEffect(() => {
+    if (multiplier2 !== multiplier2Ref.current || multiplier === multiplierRef.current) {
+      setMultiplier2(multiplier * exchangeRate)
+    } 
+  }, [multiplier, exchangeRate])
+
+  
 
   return (
     <>
-      <h1>CurrencyPal</h1>
-      <SelectCurrency id="currency1" currencies={currencies} handleSelectCurrency={handleSelectCurrency}></SelectCurrency>
-      <input name="number" type="number" value={multiplier} onChange={handleMultiplier}></input>
-      <SelectCurrency id="currency2" currencies={currencies} handleSelectCurrency={handleSelectCurrency2}></SelectCurrency>
-      
-      <CurrencyComparisonHeader currency1={selectedCurrency} currency2={selectedCurrency2} />
-      <ResultsDisplay 
-        currencyComparison={currencyComparison} 
-        currency1={selectedCurrency} 
-        currency2={selectedCurrency2}
-        multiplier={multiplier} />
+    <CssBaseline>
+    <Container>
+      <Grid container spacing={2}>
+        <Grid item xs={12}>
+          <Typography variant='h1' sx={{textAlign: 'center'}}>CurrencyPal</Typography>
+        </Grid>
+        <Grid item xs={12}>
+        <Typography sx={{textAlign: 'center'}}>{exchangeRate}</Typography>
+        </Grid>
+        <Grid item xs={12}>
+          <SelectField />
+        </Grid>
+
+        <Grid item container xs={6}>
+          <Grid item xs={4}>
+            <MultiplierField name="number" type="number" value={multiplier} handleMutliplier={handleMultiplier}></MultiplierField>
+          </Grid>
+          <Grid item xs={8}>
+            <SelectCurrency id="currency1" name="currency1" currencies={currencies} handleSelectCurrency={handleSelectCurrency}></SelectCurrency>
+          </Grid>
+        </Grid>
+        
+        <Grid item container xs={6}>
+          <Grid item xs={4}>
+            <MultiplierField name="number2" type="number" value={multiplier2} handleMutliplier={handleMultiplier2}></MultiplierField>
+          </Grid>
+          <Grid item xs={8}>
+            <SelectCurrency id="currency2" currencies={currencies} handleSelectCurrency={handleSelectCurrency2}></SelectCurrency>
+          </Grid>
+        </Grid>
+        
+        
+        <Grid item xs={12}>
+          <CurrencyComparisonHeader currency1={selectedCurrency} currency2={selectedCurrency2} />
+        </Grid>
+        <Grid item xs={12}>
+          <ResultsDisplay 
+          currencyComparison={currencyComparison} 
+          currency1={selectedCurrency} 
+          currency2={selectedCurrency2}
+          multiplier={multiplier} />
+        </Grid>
+      </Grid>
+    </Container>
+    </CssBaseline>
     </>
   );
 }

@@ -1,4 +1,8 @@
 import React, {useState} from 'react';
+import Select from '@mui/base/Select';
+import Option from '@mui/base/Option';
+import TextField from '@mui/material/TextField';
+import MenuItem from '@mui/material/MenuItem';
 
 
 function SelectCurrency({currencies, handleSelectCurrency}) {
@@ -7,21 +11,28 @@ function SelectCurrency({currencies, handleSelectCurrency}) {
     let currenciesArray = Object.entries(currencies);
 
     currenciesArray = currenciesArray.map((currency) => {
-        return (    <option 
-                        key={currency[0]} 
-                        value={currency[0]}>
-                            {currency[0].toUpperCase()}: {currency[1]}
-                    </option>
+        return (    
+            <MenuItem
+                key={currency[0]} 
+                value={currency[0]}
+                >
+                    {currency[0].toUpperCase()}: {currency[1]}
+            </MenuItem>
         )
     });
 
     
 
     return (
-            <select name="currency" onChange={handleSelectCurrency}>
-                <option value="" selected disabled hidden>Choose Currency</option>
+            <TextField 
+                select
+                fullWidth 
+                required
+                onChange={handleSelectCurrency} 
+                placeholder="Choose currency">
+                <MenuItem value="" selected disabled hidden>Choose Currency</MenuItem>
                 {currenciesArray}
-            </select>
+            </TextField>
         
     )
 }
