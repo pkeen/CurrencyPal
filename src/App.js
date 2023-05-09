@@ -11,7 +11,7 @@ import { Container, Grid, ThemeProvider } from '@mui/material';
 import {Typography} from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
 import useExchangeRate from './hooks/useExchangeRate';
-import {theme} from './styles/theme';
+import theme from './styles/theme';
 import HeaderLogo from './components/HeaderLogo';
 
 
@@ -94,7 +94,7 @@ function App() {
               <MultiplierField name="number2" type="number" value={multiplier2} handleMutliplier={handleMultiplier2}></MultiplierField>
             </Grid>
             <Grid item xs={8}>
-              <SelectCurrency id="currency2" currencies={currencies} handleSelectCurrency={handleSelectCurrency2}></SelectCurrency>
+              <SelectCurrency id="currency2" currencies={currencies} handleSelectCurrency={handleSelectCurrency2} menuVariant="secondary"></SelectCurrency>
             </Grid>
           </Grid>
           

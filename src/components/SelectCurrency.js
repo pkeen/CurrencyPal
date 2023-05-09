@@ -5,7 +5,7 @@ import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 
 
-function SelectCurrency({currencies, handleSelectCurrency}) {
+function SelectCurrency({currencies, handleSelectCurrency, menuVariant}) {
 
     /* Currency options */
     let currenciesArray = Object.entries(currencies);
@@ -15,6 +15,7 @@ function SelectCurrency({currencies, handleSelectCurrency}) {
             <MenuItem
                 key={currency[0]} 
                 value={currency[0]}
+                variant={menuVariant}
                 >
                     {currency[0].toUpperCase()}: {currency[1]}
             </MenuItem>
