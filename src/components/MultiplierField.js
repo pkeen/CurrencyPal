@@ -1,14 +1,15 @@
 import React from 'react';
 import { TextField } from '@mui/material';
 
-function MultiplierField({name, value, handleMutliplier}) {
+function MultiplierField({name, value, handleMutliplier, className}) {
     return (
         <TextField 
             type="number"
             name={name} 
             value={value} 
             onChange={handleMutliplier}
-            fullWidth />
+            fullWidth
+            className={`subvariant-left ${className}`} />
     )
 }
 

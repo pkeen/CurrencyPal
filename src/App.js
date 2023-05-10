@@ -75,28 +75,63 @@ function App() {
     <CssBaseline>
     <ThemeProvider theme={theme}>
       <Container>
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
+        <Grid 
+          container 
+          spacing={4} 
+          style={{ minHeight: '100vh' }}
+          direction="column"
+          justifyContent='center'
+        >
+          <Grid item xs={12} >
             <HeaderLogo />
           </Grid>
 
-          <Grid item container xs={6}>
-            <Grid item xs={4}>
-              <MultiplierField name="number" type="number" value={multiplier} handleMutliplier={handleMultiplier}></MultiplierField>
+          <Grid item container spacing={2}>
+            <Grid item container xs={12} sm={12} md={6}>
+              <Grid item xs={4}>
+                <MultiplierField 
+                  name="number" 
+                  type="number" 
+                  value={multiplier} 
+                  handleMutliplier={handleMultiplier}
+                  className="subvariant-primary" 
+                  />
+              </Grid>
+              <Grid item xs={8}>
+                <SelectCurrency 
+                  id="currency1" 
+                  name="currency1" 
+                  currencies={currencies} 
+                  handleSelectCurrency={handleSelectCurrency}
+                  className="subvariant-primary" 
+                  />
+              </Grid>
             </Grid>
-            <Grid item xs={8}>
-              <SelectCurrency id="currency1" name="currency1" currencies={currencies} handleSelectCurrency={handleSelectCurrency}></SelectCurrency>
+              <Grid item container md={6}>
+              <Grid item xs={4}>
+                <MultiplierField 
+                  name="number2" 
+                  type="number" 
+                  value={multiplier2} 
+                  handleMutliplier={handleMultiplier2}
+                  className="subvariant-secondary" 
+                  />
+              </Grid>
+              <Grid item xs={8}>
+                <SelectCurrency 
+                  id="currency2" 
+                  name="currency2"
+                  currencies={currencies} 
+                  handleSelectCurrency={handleSelectCurrency2} 
+                  className="subvariant-secondary" 
+                  menuVariant="secondary"
+                  />
+              </Grid>
             </Grid>
           </Grid>
           
-          <Grid item container xs={6}>
-            <Grid item xs={4}>
-              <MultiplierField name="number2" type="number" value={multiplier2} handleMutliplier={handleMultiplier2}></MultiplierField>
-            </Grid>
-            <Grid item xs={8}>
-              <SelectCurrency id="currency2" currencies={currencies} handleSelectCurrency={handleSelectCurrency2} menuVariant="secondary"></SelectCurrency>
-            </Grid>
-          </Grid>
+          
+          
           
           
           <Grid item xs={12}>

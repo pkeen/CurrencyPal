@@ -52,6 +52,57 @@ theme = createTheme(theme, {
                     },
                 }
             ]
+        },
+        MuiTextField: {
+            styleOverrides: {
+                root: {
+                    // Left variant
+                    '&.subvariant-right': {
+                        '& fieldset': {
+                            borderRadius: '0px 8px 8px 0px'
+                        }
+                    },
+                    // Right no border-radius
+                    '&.subvariant-left': {
+                        '& fieldset': {
+                            borderRadius: '8px 0px 0px 8px'
+                        }
+                    },
+                    // Border highlighting
+                    // Green
+                    '&.subvariant-primary': {
+                        '& .Mui-focused fieldset': {
+                            borderColor: theme.palette.primary.main
+                        },
+                        '&:hover fieldset': {
+                            borderColor: theme.palette.primary.main
+                        }
+                    },
+                    '&.subvariant-secondary': {
+                        '& .Mui-focused fieldset': {
+                            borderColor: theme.palette.secondary.main
+                        },
+                        '&:hover fieldset': {
+                            borderColor: theme.palette.secondary.main
+                        }
+                    },
+                }
+            },
+            variants: [
+                {
+                    props: { variant: 'left'},
+                    style: {
+                        select: {
+                            backgroundColor: 'red',
+                        borderRadius: 0,
+                        color: theme.palette.secondary.main
+                        },
+                        backgroundColor: 'red',
+                        borderRadius: 0,
+                        color: theme.palette.secondary.main
+                    }
+                }
+            ]
         }
     }
 })

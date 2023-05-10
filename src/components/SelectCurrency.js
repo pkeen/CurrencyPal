@@ -5,7 +5,7 @@ import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 
 
-function SelectCurrency({currencies, handleSelectCurrency, menuVariant}) {
+function SelectCurrency({currencies, handleSelectCurrency, variant, menuVariant, className}) {
 
     /* Currency options */
     let currenciesArray = Object.entries(currencies);
@@ -30,7 +30,9 @@ function SelectCurrency({currencies, handleSelectCurrency, menuVariant}) {
                 fullWidth 
                 required
                 onChange={handleSelectCurrency} 
-                placeholder="Choose currency">
+                placeholder="Choose currency"
+                className={`subvariant-right ${className}`}
+            >
                 <MenuItem value="" selected disabled hidden>Choose Currency</MenuItem>
                 {currenciesArray}
             </TextField>
