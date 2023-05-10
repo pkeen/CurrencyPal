@@ -3,14 +3,6 @@ import localFormatCurrency from '../utils/localFormatCurrency';
 import { Grid, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
-
-const Results = styled(Typography)(({theme}) => ({
-  color: theme.palette.grey[900],
-  fontWeight: theme.typography.fontWeightBold,
-  
-  
-}));
-
 function ResultsDisplay({currencyComparison, currency1, currency2, multiplier, multiplier2}) {
      /* Currency Comparisons */
   // const currencyComparison = useCompareCurrencies(selectedCurrency1, selectedCurrency2);
