@@ -77,7 +77,7 @@ function App() {
         <Container>
           <Grid 
             container 
-            spacing={4} 
+            spacing={5} 
             style={{ minHeight: '100vh' }}
             direction="column"
             justifyContent='center'

@@ -118,6 +118,18 @@ theme = createTheme(theme, {
             "& span.error": {
                 color: theme.palette.error.main
             },
+        },
+        h1: {
+            [theme.breakpoints.down('md')]: {
+                fontSize: '3.5rem',
+            },
+            [theme.breakpoints.down('sm')]: {
+                fontSize: '3rem',
+            },
+            [theme.breakpoints.down('xs')]: {
+                fontSize: '2.5rem',
+            },
+
         }
     }
 })
