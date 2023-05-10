@@ -3,16 +3,15 @@ import './App.css';
 import useCurrencies from './hooks/useCurrencies';
 import useCompareCurrencies from './hooks/useCompareCurrencies';
 import SelectCurrency from './components/SelectCurrency';
-import CurrencyComparisonHeader from './components/CurrencyComparisonHeader';
 import ResultsDisplay from './components/ResultsDisplay';
 import MultiplierField from './components/MultiplierField';
-import SelectField from './components/SelectField';
 import { Container, Grid, ThemeProvider } from '@mui/material';
 import {Typography} from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
 import useExchangeRate from './hooks/useExchangeRate';
 import theme from './styles/theme';
 import HeaderLogo from './components/HeaderLogo';
+import ExchangeRateDisplay from './components/ExchangeRateDisplay';
 
 
 
@@ -72,85 +71,83 @@ function App() {
 
   return (
     <>
-    <CssBaseline>
+    
     <ThemeProvider theme={theme}>
-      <Container>
-        <Grid 
-          container 
-          spacing={4} 
-          style={{ minHeight: '100vh' }}
-          direction="column"
-          justifyContent='center'
-        >
-          <Grid item xs={12} >
-            <HeaderLogo />
-          </Grid>
+      <CssBaseline>
+        <Container>
+          <Grid 
+            container 
+            spacing={4} 
+            style={{ minHeight: '100vh' }}
+            direction="column"
+            justifyContent='center'
+          >
+            <Grid item xs={12} >
+              <HeaderLogo />
+            </Grid>
 
-          <Grid item container spacing={2}>
-            <Grid item container xs={12} sm={12} md={6}>
-              <Grid item xs={4}>
-                <MultiplierField 
-                  name="number" 
-                  type="number" 
-                  value={multiplier} 
-                  handleMutliplier={handleMultiplier}
-                  className="subvariant-primary" 
-                  />
+            <Grid item container spacing={2}>
+              <Grid item container xs={12} sm={12} md={6}>
+                <Grid item xs={4}>
+                  <MultiplierField 
+                    name="number" 
+                    type="number" 
+                    value={multiplier} 
+                    handleMutliplier={handleMultiplier}
+                    className="subvariant-primary" 
+                    />
+                </Grid>
+                <Grid item xs={8}>
+                  <SelectCurrency 
+                    id="currency1" 
+                    name="currency1" 
+                    currencies={currencies} 
+                    handleSelectCurrency={handleSelectCurrency}
+                    className="subvariant-primary" 
+                    />
+                </Grid>
               </Grid>
-              <Grid item xs={8}>
-                <SelectCurrency 
-                  id="currency1" 
-                  name="currency1" 
-                  currencies={currencies} 
-                  handleSelectCurrency={handleSelectCurrency}
-                  className="subvariant-primary" 
-                  />
+                <Grid item container md={6}>
+                <Grid item xs={4}>
+                  <MultiplierField 
+                    name="number2" 
+                    type="number" 
+                    value={multiplier2} 
+                    handleMutliplier={handleMultiplier2}
+                    className="subvariant-secondary" 
+                    />
+                </Grid>
+                <Grid item xs={8}>
+                  <SelectCurrency 
+                    id="currency2" 
+                    name="currency2"
+                    currencies={currencies} 
+                    handleSelectCurrency={handleSelectCurrency2} 
+                    className="subvariant-secondary" 
+                    menuVariant="secondary"
+                    />
+                </Grid>
               </Grid>
             </Grid>
-              <Grid item container md={6}>
-              <Grid item xs={4}>
-                <MultiplierField 
-                  name="number2" 
-                  type="number" 
-                  value={multiplier2} 
-                  handleMutliplier={handleMultiplier2}
-                  className="subvariant-secondary" 
-                  />
-              </Grid>
-              <Grid item xs={8}>
-                <SelectCurrency 
-                  id="currency2" 
-                  name="currency2"
-                  currencies={currencies} 
-                  handleSelectCurrency={handleSelectCurrency2} 
-                  className="subvariant-secondary" 
-                  menuVariant="secondary"
-                  />
-              </Grid>
+            
+            
+            <Grid item container xs={12} justifyContent={'center'}>
+              <ResultsDisplay 
+              currencyComparison={currencyComparison} 
+              currency1={selectedCurrency} 
+              currency2={selectedCurrency2}
+              multiplier={multiplier} 
+              multiplier2={multiplier2}/>
             </Grid>
+
+            
+             <ExchangeRateDisplay exchangeRate={exchangeRate} />
+            
           </Grid>
-          
-          
-          
-          
-          
-          <Grid item xs={12}>
-            <CurrencyComparisonHeader currency1={selectedCurrency} currency2={selectedCurrency2} />
-          </Grid>
-          <Grid item xs={12}>
-            <Typography sx={{textAlign: 'center'}}>Exchange rate: {exchangeRate}</Typography>
-          </Grid>
-          <Grid item xs={12}>
-            <ResultsDisplay 
-            currencyComparison={currencyComparison} 
-            currency1={selectedCurrency} 
-            currency2={selectedCurrency2}
-            multiplier={multiplier} />
-          </Grid>
-        </Grid>
-      </Container>
+        </Container>
+        </CssBaseline>
     </ThemeProvider>
-    </CssBaseline>
+    
     </>
   );
 }

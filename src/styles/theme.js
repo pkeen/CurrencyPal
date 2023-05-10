@@ -2,6 +2,7 @@ import { createTheme } from "@mui/material";
 import { teal } from "@mui/material/colors";
 
 let theme = createTheme({
+    
     palette: {
         primary: {
             //main: teal[500]
@@ -103,6 +104,20 @@ theme = createTheme(theme, {
                     }
                 }
             ]
+        }
+    },
+    typography: {
+        h5: {
+            fontWeight: theme.typography.fontWeightBold,
+            "& span.primary": {
+                color: theme.palette.primary.main,
+            },
+            "& span.secondary": {
+                color: theme.palette.secondary.main,
+                },
+            "& span.error": {
+                color: theme.palette.error.main
+            },
         }
     }
 })

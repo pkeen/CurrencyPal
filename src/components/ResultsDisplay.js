@@ -1,10 +1,22 @@
 import React from 'react';
-import styles from './ResultsDisplay.module.css';
+import localFormatCurrency from '../utils/localFormatCurrency';
+import { Grid, Typography } from '@mui/material';
+import { styled } from '@mui/material/styles';
 
-function ResultsDisplay({currencyComparison, currency1, currency2, multiplier}) {
+
+const Results = styled(Typography)(({theme}) => ({
+  color: theme.palette.grey[900],
+  fontWeight: theme.typography.fontWeightBold,
+  
+  
+}));
+
+function ResultsDisplay({currencyComparison, currency1, currency2, multiplier, multiplier2}) {
      /* Currency Comparisons */
   // const currencyComparison = useCompareCurrencies(selectedCurrency1, selectedCurrency2);
-
+  if (!currency1 || !currency2) {
+    return (<></>)
+  }
   /* Logic for creating list */
   let currencyComparisonArray = Object.entries(currencyComparison);
 
@@ -13,16 +25,32 @@ function ResultsDisplay({currencyComparison, currency1, currency2, multiplier}) 
   })
 
   return (
-    <div className={styles.twoColumn}>
-        <div className={styles.firstCurrency} >
-            <p>{multiplier} {currency1} = </p>
-        </div>
-        <ul className={styles.secondCurrency}>
-            {currencyComparisonArray}
-        </ul>
-    </div>
+    <Grid item>
+      <Typography 
+        variant='h5' 
+        component='h2'
+      > 
+          <span className="primary">
+          {localFormatCurrency(multiplier)} {currency1.toUpperCase()}
+          </span>
+          {` = `}
+          <span className="secondary">
+           {localFormatCurrency(multiplier2)} {currency2.toUpperCase()}
+          </span> 
+      </Typography>
+    </Grid>
+        
+
     
   )
 }
 
 export default ResultsDisplay;
+
+/*
+<br></br>
+        <ul className={styles.secondCurrency}>
+            {currencyComparisonArray}
+        </ul>
+
+        */
