@@ -49,6 +49,10 @@ theme = createTheme(theme, {
                             color: theme.palette.secondary.superDark,
                             backgroundColor: theme.palette.secondary.superLight,
                         },
+                        "&.Mui-selected": {
+                            color: theme.palette.secondary.superDark,
+                            backgroundColor: theme.palette.secondary.superLight,
+                        }
                         
                     },
                 }
@@ -156,13 +160,21 @@ theme = createTheme(theme, {
             styleOverrides: {
                 root: {
                     "&.primary-color": {
-                        border: '1px solid',
+                        border: 'none',
                         borderColor: theme.palette.primary.dark,
                         "&.focused": {
                             border: '2px solid',
                             borderColor: theme.palette.primary.main
                         },
                     },
+                    "&.secondary-color": {
+                        border: 'none',
+                        borderColor: theme.palette.secondary.dark,
+                        "&.focused": {
+                            border: '2px solid',
+                            borderColor: theme.palette.secondary.main
+                        }
+                    }
                     
 
                     

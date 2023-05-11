@@ -1,16 +1,17 @@
 import React from 'react';
-import { TextField, MenuItem } from '@mui/material';
+import { TextField, MenuItem, Box } from '@mui/material';
+import { styled } from '@mui/material/styles';
 
-export default function SelectCurrency({currencies}) {
+export default function SelectCurrency({currencies, handleSelectCurrency, menuVariant}) {
     /* Currency options */
-    let currenciesArray = Object.entries(currencies, menuVariant);
+    let currenciesArray = Object.entries(currencies);
 
     currenciesArray = currenciesArray.map((currency) => {
         return (    
             <MenuItem
                 key={currency[0]} 
                 value={currency[0]}
-                //variant={menuVariant}
+                variant={menuVariant}
                 >
                     {currency[0].toUpperCase()}: {currency[1]}
             </MenuItem>
@@ -20,13 +21,13 @@ export default function SelectCurrency({currencies}) {
     return (
         <TextField 
                 select
+                onChange={handleSelectCurrency}
                 //fullWidth 
-                required
-                placeholder="Select Currency"
+                defaultValue="none"
                 inputProps={{ 'aria-label': 'Select currency' }}
                 className={"subvariant-noBorder"}
             >
-                <MenuItem value="" selected disabled hidden>Choose Currency</MenuItem>
+                <MenuItem value="none" selected disabled>Choose Currency</MenuItem>
                 {currenciesArray}
         </TextField>
     )

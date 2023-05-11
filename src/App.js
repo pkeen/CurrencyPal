@@ -10,8 +10,7 @@ import theme from './styles/theme';
 import HeaderLogo from './components/HeaderLogo';
 import ExchangeRateDisplay from './components/ExchangeRateDisplay';
 import JointMultiplierAndCurrencyField from './components/JointMultiplierAndCurrencyField';
-import CustomizedInputBase from './components/inputs/CustomMultiplierCurrencyInput';
-import SimpleTwoButtonHighlightState from './components/SimpleTwoButtonHighlightState';
+import CustomMultiplierCurrencyInput from './components/inputs/CustomMultiplierCurrencyInput';
 
 
 
@@ -87,23 +86,23 @@ function App() {
             </Grid>
 
             <Grid item container spacing={2}>
-            
-              <JointMultiplierAndCurrencyField 
-                multiplier={multiplier} 
+              <CustomMultiplierCurrencyInput
+                multiplier={multiplier}
                 handleMultiplier={handleMultiplier}
                 currencies={currencies}
                 handleSelectCurrency={handleSelectCurrency}
                 idNumber={1}
+                className="primary-color"
               />
-
-              <JointMultiplierAndCurrencyField 
-                multiplier={multiplier2} 
+              <CustomMultiplierCurrencyInput
+                multiplier={multiplier2}
                 handleMultiplier={handleMultiplier2}
                 currencies={currencies}
                 handleSelectCurrency={handleSelectCurrency2}
                 idNumber={2}
+                className="secondary-color"
+                menuVariant="secondary"
               />
-              
             </Grid>
             
             
@@ -119,14 +118,6 @@ function App() {
             
              <ExchangeRateDisplay exchangeRate={exchangeRate} />
             
-            <Grid item>
-            <CustomizedInputBase currencies={currencies}/>
-            </Grid>
-            
-
-            <Grid item  >
-            <SimpleTwoButtonHighlightState /> 
-            </Grid>
             
           </Grid>
         </Container>

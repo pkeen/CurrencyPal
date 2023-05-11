@@ -2,10 +2,14 @@ import React, {useState} from 'react';
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import Divider from '@mui/material/Divider';
+import Grid from '@mui/material/Grid';
 import SelectCurrency from './SelectCurrency';
+import MultiplierField from './MultiplierField';
 
-export default function CustomizedInputBase( {currencies}) {
 
+export default function CustomMultiplierCurrencyInput( {currencies, multiplier, handleSelectCurrency, handleMultiplier, idNumber, className, menuVariant}) {
+
+  // Handle state logic for focusing                 
   const [focused, setFocused] = useState(false);
 
   function handleFocus() {
@@ -17,21 +21,18 @@ export default function CustomizedInputBase( {currencies}) {
   }
 
   return (
-    <Paper
-      component="form"
-      sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400, borderRadius: '8px'}}
-      onFocus={handleFocus}
-      onBlur={handleBlur}
-      className={focused ? "primary-color focused" : "primary-color"}
-    >
-      <InputBase
-        sx={{ ml: 1, flex: 1 }}
-        placeholder="Amount"
-        inputProps={{ 'aria-label': 'Currency amount' }}
-      />
-      <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-      <SelectCurrency currencies={currencies} />
-    </Paper>
+    <Grid item container xs={12} sm={12} md={6}>
+      <Paper
+        sx={{ display: 'flex', alignItems: 'center', flex: 1, borderRadius: 2, ml: 0}}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        className={focused ? `${className} focused` : className}
+      > 
+        <MultiplierField value={multiplier} handleMultiplier={handleMultiplier}  />
+        <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+        <SelectCurrency sx={{flex:'1 1 100px'}} currencies={currencies} handleSelectCurrency={handleSelectCurrency} menuVariant={menuVariant}/>
+      </Paper>
+    </Grid>
   );
 }
   /*
