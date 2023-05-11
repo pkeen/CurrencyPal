@@ -10,6 +10,8 @@ import theme from './styles/theme';
 import HeaderLogo from './components/HeaderLogo';
 import ExchangeRateDisplay from './components/ExchangeRateDisplay';
 import JointMultiplierAndCurrencyField from './components/JointMultiplierAndCurrencyField';
+import CustomizedInputBase from './components/inputs/CustomMultiplierCurrencyInput';
+import SimpleTwoButtonHighlightState from './components/SimpleTwoButtonHighlightState';
 
 
 
@@ -116,6 +118,15 @@ function App() {
 
             
              <ExchangeRateDisplay exchangeRate={exchangeRate} />
+            
+            <Grid item>
+            <CustomizedInputBase currencies={currencies}/>
+            </Grid>
+            
+
+            <Grid item  >
+            <SimpleTwoButtonHighlightState /> 
+            </Grid>
             
           </Grid>
         </Container>

@@ -135,6 +135,42 @@ theme = createTheme(theme, {
     }
 })
 
+//updates for new custom input field
+theme = createTheme(theme, {
+    components: {
+        MuiTextField: {
+            styleOverrides: {
+                root: {
+                    "&.subvariant-noBorder": {
+                        "& fieldset": {
+                            border: 'none',
+                            outline: 'none',
+                        }
+                    }
+
+                }
+                
+            }
+        },
+        MuiPaper: {
+            styleOverrides: {
+                root: {
+                    "&.primary-color": {
+                        border: '1px solid',
+                        borderColor: theme.palette.primary.dark,
+                        "&.focused": {
+                            border: '2px solid',
+                            borderColor: theme.palette.primary.main
+                        },
+                    },
+                    
+
+                    
+                }
+            }
+        }
+    }
+})
 
 export default theme;
 
