@@ -3,7 +3,7 @@ import localFormatCurrency from '../utils/localFormatCurrency';
 import { Grid, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
-function ResultsDisplay({currencyComparison, currency1, currency2, multiplier, multiplier2}) {
+function ResultsDisplay({ currency1, currency2, multiplier, multiplier2}) {
      /* Currency Comparisons */
   // const currencyComparison = useCompareCurrencies(selectedCurrency1, selectedCurrency2);
   if (currency1 && currency2 && multiplier) {

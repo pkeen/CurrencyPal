@@ -1,17 +1,14 @@
 import React, {useState, useEffect, useRef} from 'react';
 import './App.css';
 import useCurrencies from './hooks/useCurrencies';
-import useCompareCurrencies from './hooks/useCompareCurrencies';
-import ResultsDisplay from './components/ResultsDisplay';
+import useExchangeRate from './hooks/useExchangeRate';
 import { Container, Grid, ThemeProvider } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
-import useExchangeRate from './hooks/useExchangeRate';
 import theme from './styles/theme';
+import ResultsDisplay from './components/ResultsDisplay';
 import HeaderLogo from './components/HeaderLogo';
 import ExchangeRateDisplay from './components/ExchangeRateDisplay';
-import JointMultiplierAndCurrencyField from './components/JointMultiplierAndCurrencyField';
 import CustomMultiplierCurrencyInput from './components/inputs/CustomMultiplierCurrencyInput';
-
 
 
 function App() {
@@ -34,8 +31,6 @@ function App() {
   /* useExchangeRate */
   const exchangeRate = useExchangeRate(selectedCurrency, selectedCurrency2);
 
-  /* Currency Comparisons */
-  const currencyComparison = useCompareCurrencies(selectedCurrency, selectedCurrency2);
   
   /* Mutliplier Value */
   const [multiplier, setMultiplier] = useState(1);
@@ -110,7 +105,6 @@ function App() {
             
             <Grid item container xs={12} justifyContent={'center'}>
               <ResultsDisplay 
-              currencyComparison={currencyComparison} 
               currency1={selectedCurrency} 
               currency2={selectedCurrency2}
               multiplier={multiplier} 

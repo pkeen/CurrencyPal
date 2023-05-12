@@ -6,7 +6,7 @@ function MultiplierField({value, handleMultiplier}) {
         <TextField 
             sx={{ pl: 1, flex: 1, minWidth: 50}}
             type="number"
-            value={value} 
+            value={value ? value : ""} 
             onChange={handleMultiplier}
             placeholder='Amount'
             //fullWidth
