@@ -17,6 +17,7 @@ A simple currency coverter web app, using [currency-api by fawazahmed0](https://
 
 #### Bugs/Improvements
 * Make Initial select box state use Geolocation to set local currency
+* Set minimum width limit shrink of mulitplier field at small screen sizes
 
 (This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).)
 
