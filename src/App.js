@@ -93,6 +93,7 @@ function App() {
                 handleSelectCurrency={handleSelectCurrency}
                 idNumber={1}
                 className="primary-color"
+                boxShadowIndex={25}
               />
               <CustomMultiplierCurrencyInput
                 multiplier={multiplier2}
@@ -102,6 +103,7 @@ function App() {
                 idNumber={2}
                 className="secondary-color"
                 menuVariant="secondary"
+                boxShadowIndex={26}
               />
             </Grid>
             

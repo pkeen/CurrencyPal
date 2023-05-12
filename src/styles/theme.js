@@ -184,6 +184,17 @@ theme = createTheme(theme, {
     }
 })
 
+// add new box shadows
+// green will be 25
+theme.shadows.push(
+    "0px 3px 5px -1px rgba(0,41,24,0.4),0px 5px 8px 0px rgba(24, 166, 120,0.2),0px 1px 14px 0px rgba(24, 166, 120,0.13)"
+);
+// blue will be 26
+theme.shadows.push(
+    "0px 3px 5px -1px rgba(7,20,34, 0.4),0px 5px 8px 0px rgba(37, 106, 183,0.2),0px 1px 14px 2px rgba(37, 106, 183,0.13)"
+);
+
+
 export default theme;
 
 

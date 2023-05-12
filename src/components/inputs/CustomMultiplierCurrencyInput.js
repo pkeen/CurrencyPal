@@ -7,7 +7,7 @@ import SelectCurrency from './SelectCurrency';
 import MultiplierField from './MultiplierField';
 
 
-export default function CustomMultiplierCurrencyInput( {currencies, multiplier, handleSelectCurrency, handleMultiplier, idNumber, className, menuVariant}) {
+export default function CustomMultiplierCurrencyInput( {currencies, multiplier, handleSelectCurrency, handleMultiplier, idNumber, className, menuVariant, boxShadowIndex}) {
 
   // Handle state logic for focusing                 
   const [focused, setFocused] = useState(false);
@@ -24,6 +24,7 @@ export default function CustomMultiplierCurrencyInput( {currencies, multiplier, 
     <Grid item container xs={12} sm={12} md={6}>
       <Paper
         sx={{ display: 'flex', alignItems: 'center', flex: 1, borderRadius: 2, ml: 0}}
+        elevation={boxShadowIndex}
         onFocus={handleFocus}
         onBlur={handleBlur}
         className={focused ? `${className} focused` : className}
