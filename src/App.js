@@ -47,7 +47,7 @@ function App() {
     setMultiplier2(e.target.value);
     multiplier2Ref.current = e.target.value;
   }
-
+  
   useEffect(() => {
     if (multiplier !== multiplierRef.current || multiplier2 === multiplier2Ref.current){
       setMultiplier(multiplier2 * (1 / exchangeRate))
