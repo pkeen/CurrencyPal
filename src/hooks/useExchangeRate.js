@@ -18,7 +18,10 @@ const useExchangeRate = (currency1, currency2) => {
     }
 
     useEffect(() => {
-        apiCall();
+        // the conditional only works here
+        if (currency1 && currency2) {
+            apiCall();
+        }  
     }, [currency1, currency2])
 
     return exchangeRate;
